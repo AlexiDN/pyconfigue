@@ -1,0 +1,83 @@
+[tool.poetry]
+packages = [{include="configue",from="src"}]
+name = "configue"
+version = "0.0.1"
+readme= "README.md"
+description = "A library that let's you manage your python app configuration easily"
+authors = ["Alexi Desvignes Nouvel"]
+
+
+# Common dependencies
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic = "^2.11.4"
+
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.11.9"
+
+[tool.ruff]
+src = ["src"]
+exclude =[] 
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+select=["ALL"]
+ignore = [
+    "D107",
+    "D101",
+    "D400",
+    "D415",
+    "PLR0913",
+    "FBT001",
+    "FBT002",
+    "N815",
+    "PYI051",
+    "FA102",
+    "FA100",
+    "D100",
+    "I001",
+    "CPY001",
+    "D205",
+    "FBT003",
+    "FIX002",
+    "TD002",
+    "TD003",
+    "TD004",
+    "PLR0917",
+    "DOC201",
+    "D203",
+    "COM812",
+    "D213",
+    "RUF012",
+    "PGH004",
+    "DOC501",
+    "D401",
+    "BLE001",
+    "TRY003",
+    "EM101",
+    "D104",
+    "ANN401",
+    "T201",
+    "TC001",
+    "PTH120",
+    "PTH123",
+    "PTH103",
+    "F403",
+
+    ]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+
+[build-system]
+requires = ["poetry-core>=1.8.5"]
+build-backend = "poetry.core.masonry.api"
