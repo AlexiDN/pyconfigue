@@ -1,4 +1,4 @@
 # ruff: noqa: F401
-from .default_env_provider import DefaultProvider
-from .env_provider import EnvironmentConfigProvider
+from .default_provider import DefaultProvider
+from .env_provider import EnvProvider
 from .base_providers import *

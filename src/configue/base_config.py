@@ -1,2 +1,2 @@
-class BaseConfig:
+class ConFigue:
     """Base Configuration Object"""

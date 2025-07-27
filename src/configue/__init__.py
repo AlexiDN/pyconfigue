@@ -1,3 +1,3 @@
 # ruff : noqa: F401
-from .base_config import BaseConfig
-from .config_manager import ConfigManager
+from .base_config import ConFigue
+from .config_manager import ConFigueManager
