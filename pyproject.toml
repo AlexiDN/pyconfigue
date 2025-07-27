@@ -24,7 +24,7 @@ ruff = "^0.11.9"
 
 [tool.ruff]
 src = ["src"]
-exclude =["tests"] 
+exclude =[] 
 line-length = 120
 indent-width = 4
 
@@ -78,6 +78,7 @@ ignore = [
     ]
 
 [tool.ruff.format]
+
 quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
