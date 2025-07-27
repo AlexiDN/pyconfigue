@@ -1,19 +1,15 @@
 # Included templates from TBC
 include:
-  # Gitleaks template
-  - remote: "https://gitlab.com/to-be-continuous/gitleaks/-/raw/2.7/templates/gitlab-ci-gitleaks.yml"
   # Python template
   - remote: "https://gitlab.com/to-be-continuous/python/-/raw/7.14/templates/gitlab-ci-python.yml"
 
 variables:
   PYTHON_PACKAGE_ENABLED: "true"
   PYTHON_PUBLISH_ENABLED: "true"
-  PYTEST_ENABLED: "false"
-  BANDIT_ENABLED: "true"
+  PYTEST_ENABLED: "true"
   PYTHON_SBOM_DISABLED: "true"
   RUFF_ENABLED: "true"
   RUFF_FORMAT_ENABLED: "true"
-  BANDIT_ARGS: "-c pyproject.toml"
 
 stages:
   - build
