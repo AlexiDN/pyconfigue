@@ -3,7 +3,7 @@ from os import environ
 
 import pytest
 
-from configue.providers import DefaultProvider
+from ConFigue.providers import DefaultProvider
 from ressources import DEFAULT_CONFIGUES, SELECTOR_KEY, ConFigue1Test, configue_selector
 
 TEST_KEY = "TEST_CONFIG_KEY"

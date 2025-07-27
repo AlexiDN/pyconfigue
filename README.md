@@ -17,7 +17,7 @@ The key features are:
 ## Installation
 
 ```
-pip install configue
+pip install ConFigue
 ```
 
 ## Usage

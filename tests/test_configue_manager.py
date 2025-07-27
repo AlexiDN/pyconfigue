@@ -1,6 +1,6 @@
 # ruff: noqa
 from os import environ
-from configue.providers import DefaultProvider, EnvProvider
+from ConFigue.providers import DefaultProvider, EnvProvider
 from ressources import ConFigue1Test, ConfigueManagerTest
 import pytest
 

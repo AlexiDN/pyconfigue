@@ -1,7 +1,7 @@
 [tool.poetry]
-packages = [{include="configue",from="src"}]
-name = "configue"
-version = "0.0.1"
+packages = [{include="ConFigue",from="src"}]
+name = "ConFigue"
+version = "0.0.1-alpha"
 readme= "README.md"
 description = "A library that let's you manage your python app configuration easily"
 authors = ["Alexi Desvignes Nouvel"]

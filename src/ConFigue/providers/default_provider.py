@@ -1,6 +1,6 @@
 from typing import Any, Callable
 from .base_providers import StaticConfigProvider
-from configue.base_config import ConFigue
+from ConFigue.base_config import ConFigue
 
 
 class DefaultProvider(StaticConfigProvider):
