@@ -85,6 +85,10 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 docstring-code-format = true
 
+[tool.bandit]
+exclude_dirs = ["tests"]
+
+
 [build-system]
 requires = ["poetry-core>=1.8.5"]
 build-backend = "poetry.core.masonry.api"

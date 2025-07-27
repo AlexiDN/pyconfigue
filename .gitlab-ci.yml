@@ -13,6 +13,7 @@ variables:
   PYTHON_SBOM_DISABLED: "true"
   RUFF_ENABLED: "true"
   RUFF_FORMAT_ENABLED: "true"
+  BANDIT_ARGS: "-c pyproject.toml"
 
 stages:
   - build
