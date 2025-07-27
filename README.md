@@ -1,4 +1,4 @@
-# ConFigue
+# PyConFigue
 
 
 

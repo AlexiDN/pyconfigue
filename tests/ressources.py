@@ -1,7 +1,7 @@
 # ruff: noqa
 from os import environ
 from pydantic import BaseModel
-from ConFigue import ConFigue, ConFigueManager
+from pyconfigue import ConFigue, ConFigueManager
 
 
 class PydanticModelTest(BaseModel):

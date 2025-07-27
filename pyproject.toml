@@ -1,6 +1,6 @@
 [tool.poetry]
-packages = [{include="ConFigue",from="src"}]
-name = "ConFigue"
+packages = [{include="pyconfigue",from="src"}]
+name = "pyconfigue"
 version = "0.0.1-alpha"
 readme= "README.md"
 description = "A library that let's you manage your python app configuration easily"
@@ -74,7 +74,6 @@ ignore = [
     "PTH123",
     "PTH103",
     "F403",
-    "N999"
 
     ]
 

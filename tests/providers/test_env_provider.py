@@ -1,6 +1,6 @@
 # ruff: noqa
 from os import environ
-from ConFigue.providers import EnvProvider
+from pyconfigue.providers import EnvProvider
 
 TEST_KEY = "TEST_CONFIG_KEY"
 TEST_VALUE = "test"
