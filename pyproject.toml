@@ -1,24 +1,42 @@
 [tool.poetry]
-packages = [{include="configue",from="src"}]
-name = "configue"
+packages = [{ include = "pyconfigue", from = "src" }]
+
+[project]
+name = "pyconfigue"
 version = "0.0.1"
-readme= "README.md"
+readme = "README.md"
 description = "A library that let's you manage your python app configuration easily"
-authors = ["Alexi Desvignes Nouvel"]
+authors = [{name="Alexi Desvignes Nouvel"}]
+keywords = [ "config", "configue","pyconfigue","configuration" ]
+
+[project.urls]
+repository = "https://github.com/AlexiDN/pyconfigue"
+documentation = "https://github.com/AlexiDN/pyconfigue/wiki"
+
 
 
 # Common dependencies
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.10"
 pydantic = "^2.11.4"
-
+pyyaml = "^6.0.2"
+toml = "^0.10.2"
 
 [tool.poetry.group.lint.dependencies]
 ruff = "^0.11.9"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.1"
+
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+
 [tool.ruff]
 src = ["src"]
-exclude =[] 
+exclude = [".cache"]
+extend-exclude = ["tests"]
 line-length = 120
 indent-width = 4
 
@@ -26,7 +44,7 @@ indent-width = 4
 fixable = ["ALL"]
 unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-select=["ALL"]
+select = ["ALL"]
 ignore = [
     "D107",
     "D101",
@@ -69,7 +87,7 @@ ignore = [
     "PTH103",
     "F403",
 
-    ]
+]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -77,6 +95,7 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 docstring-code-format = true
+
 
 [build-system]
 requires = ["poetry-core>=1.8.5"]

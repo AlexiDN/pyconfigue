@@ -1,0 +1,5 @@
+TEST_CONFIG_KEY_4:
+  key1:
+    k1: "0"
+    k2: "0"
+  key2: 0.0
