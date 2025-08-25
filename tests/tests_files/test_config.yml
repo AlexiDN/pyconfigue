@@ -1,0 +1,10 @@
+TEST_CONFIG_KEY: "json"
+TEST_CONFIG_KEY_2: 20
+TEST_CONFIG_KEY_3:
+  - "10"
+  - "20"
+TEST_CONFIG_KEY_4:
+  key1:
+    k1: "k1"
+    k2: "k2"
+  key2: 5.0

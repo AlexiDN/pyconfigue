@@ -7,7 +7,7 @@ from pyconfigue.providers import DefaultProvider
 from ressources import DEFAULT_CONFIGUES, SELECTOR_KEY, ConFigue1Test, configue_selector
 
 TEST_KEY = "TEST_CONFIG_KEY"
-TEST_VALUE = ConFigue1Test.TEST_CONFIG_KEY
+TEST_VALUE = ConFigue1Test().TEST_CONFIG_KEY
 
 
 class TestDefaultProvider:
@@ -24,18 +24,22 @@ class TestDefaultProvider:
     @staticmethod
     def test_load_single_configue():
         provider = DefaultProvider(DEFAULT_CONFIGUES["1"])
+        assert provider._config is None
+        provider.load_config()
         assert provider._config == DEFAULT_CONFIGUES["1"]
 
     @staticmethod
     def test_load_selector_case_1():
         environ[SELECTOR_KEY] = "1"
         provider = DefaultProvider(DEFAULT_CONFIGUES, configue_selector)
+        provider.load_config()
         assert provider._config == DEFAULT_CONFIGUES["1"]
         environ.pop(SELECTOR_KEY, None)
 
     @staticmethod
     def test_load_selector_case_2():
         provider = DefaultProvider(DEFAULT_CONFIGUES, configue_selector)
+        provider.load_config()
         assert provider._config == DEFAULT_CONFIGUES["2"]
 
     @staticmethod
