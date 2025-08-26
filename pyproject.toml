@@ -3,7 +3,7 @@ packages = [{ include = "pyconfigue", from = "src" }]
 
 [project]
 name = "pyconfigue"
-version = "0.0.1"
+version = "0.0.2"
 readme = "README.md"
 description = "A library that let's you manage your python app configuration easily"
 authors = [{name="Alexi Desvignes Nouvel"}]
