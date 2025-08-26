@@ -81,6 +81,14 @@ from .app_config import CONFIG
 print("CONFIG VALUE of CONFIG_KEY",CONFIG.CONFIG_KEY)
 ```
 
+## Documentation
+
+See our [wiki](https://github.com/AlexiDN/pyconfigue/wiki) if you need more details about how the project works.
+
+## License 
+
+The project is under the MIT License.
+
 ## Requirements
 
 The project requires:
