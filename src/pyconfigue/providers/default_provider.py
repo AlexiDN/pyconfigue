@@ -1,4 +1,5 @@
-from typing import Any, Callable
+from typing import Any
+from collections.abc import Callable
 from .base_providers import StaticConFigueProvider
 from pyconfigue.base_config import ConFigueModel
 

@@ -1,4 +1,5 @@
-from typing import Any, Callable
+from typing import Any
+from collections.abc import Callable
 from pyconfigue.providers.base_providers import DynamicConFigueProvider
 from pyconfigue.utils.file_manager import FileManager
 
