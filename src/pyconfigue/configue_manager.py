@@ -1,4 +1,4 @@
-from typing import Any, get_type_hints
+from typing import Any, get_origin, get_type_hints
 
 from pydantic import BaseModel
 
@@ -13,13 +13,22 @@ class ConFigueManager:
 
     providers: list[ConFigueProvider]
     __configue_model: type[ConFigueModel]
+    __validator_cls: type[ValidatorModel]
 
     def __init__(self, providers: list[ConFigueProvider]) -> None:
-        model_validator = self._create_validator_class_from_parent()
+        self.__validator_cls = self._create_validator_class_from_parent()
         # init providers
         self.providers = providers
         for provider in self.providers:
-            provider.set_model_validator(model_validator)
+            provider.set_model_validator(self.__validator_cls)
+
+    def dump(self) -> dict[str, Any]:
+        """Resolve every declared config key through the providers and return them as a dict."""
+        return {key: getattr(self, key) for key in get_type_hints(self.__configue_model)}
+
+    def to_model(self) -> ValidatorModel:
+        """Resolve every declared config key and return a validated instance of the underlying model."""
+        return self.__validator_cls.model_validate(self.dump())
 
     def __getattribute__(self, name: str) -> Any:
         """Return the config key if name is uppercase else return the attribute of the class"""
@@ -38,15 +47,16 @@ class ConFigueManager:
     @staticmethod
     def _convert_value(value: Any, desired_type: type) -> Any:
         """Convert a value to the type specified"""
-        if not isinstance(value, desired_type):
+        origin = get_origin(desired_type) or desired_type
+        if not isinstance(value, origin):
             # convert to Pydantic model
-            if issubclass(desired_type, BaseModel):
-                return desired_type.model_validate()
+            if issubclass(origin, BaseModel):
+                return desired_type.model_validate(value)
             # other types
             return desired_type(value)
         return value
 
-    def _create_validator_class_from_parent(self) -> ValidatorModel:
+    def _create_validator_class_from_parent(self) -> type[ValidatorModel]:
         """Creates a pydantic class from the parent ConFigueModel if there is one.
         It can later be used to properly validate the dicts representing the model_cls
         """
