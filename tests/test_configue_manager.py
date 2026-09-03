@@ -33,3 +33,23 @@ class TestConFigueManager:
         manager = cls.get_instance()
         with pytest.raises(KeyError):
             manager.TEST_UNDEFINED_KEY
+
+    def test_dump_resolves_all_keys(cls):
+        manager = cls.get_instance()
+        dump = manager.dump()
+        assert dump["TEST_CONFIG_KEY"] == "json"  # file provider wins over default
+        assert dump["TEST_CONFIG_KEY_2"] == 20
+        assert dump["TEST_CONFIG_KEY_3"] == ["10", "20"]
+
+    def test_to_model_returns_validated_instance(cls):
+        manager = cls.get_instance()
+        model = manager.to_model()
+        assert model.TEST_CONFIG_KEY == "json"
+        assert model.TEST_CONFIG_KEY_2 == 20
+        assert model.TEST_CONFIG_KEY_3 == ["10", "20"]
+
+    def test_to_model_raises_on_missing_key(cls):
+        manager = cls.get_instance()
+        manager.providers = []  # no provider can resolve any key
+        with pytest.raises(KeyError):
+            manager.to_model()
