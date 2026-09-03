@@ -28,9 +28,11 @@ pip install pyconfigue
 from pyconfigue import ConFigueModel
 from pydantic import BaseModel
 
+
 class MyPydanticModel(BaseModel):
     key1: dict[str, str]
     key2: float
+
 
 class MyConFigueModel(ConFigueModel):
     CONFIG_KEY: str
@@ -42,35 +44,39 @@ class MyConFigueModel(ConFigueModel):
 ### 2 - Define your Providers
 
 ```python
-from pyconfigue.providers import StaticFileProvider,EnvProvider,DefaultProvider
+from pyconfigue.providers import StaticFileProvider, EnvProvider, DefaultProvider
 
 # File Provider
 
 
-file_provider = StaticFileProvider( ["my_file.yaml","my_file_2.yaml"])
+file_provider = StaticFileProvider(["my_file.yaml", "my_file_2.yaml"])
 
 # Environment Provider
-env_provider=EnvProvider()
+env_provider = EnvProvider()
+
 
 # Default Provider
 class DefaultConFigue(MyConFigueModel):
     CONFIG_KEY = "test_value"
-    CONFIG_KEY_2= 2
+    CONFIG_KEY_2 = 2
     CONFIG_KEY_3 = ["1", "2"]
     CONFIG_KEY_4 = MyPydanticModel(key1={"k1": "1", "k2": "2"}, key2=1.2)
 
-default_provider = DefaultProvider(DefaultConFigue())
 
+default_provider = DefaultProvider(DefaultConFigue())
 ```
 
 ### 3 - Define your ConFigue Manager
 
 ```python
 from pyconfigue import ConFigueManager
+
+
 class MyAppConFigueManager(ConFigueManager, MyConFigueModel):
     pass
 
-CONFIG=MyAppConFigueManager([env_provider, file_provider, default_provider])
+
+CONFIG = MyAppConFigueManager([env_provider, file_provider, default_provider])
 ```
 
 ### 4 - Use your ConFigue
@@ -78,7 +84,14 @@ CONFIG=MyAppConFigueManager([env_provider, file_provider, default_provider])
 ```python
 from .app_config import CONFIG
 
-print("CONFIG VALUE of CONFIG_KEY",CONFIG.CONFIG_KEY)
+print("CONFIG VALUE of CONFIG_KEY", CONFIG.CONFIG_KEY)
+```
+
+### 5 - Dump the full config
+
+```python
+CONFIG.dump()  # dict of every declared key, resolved through the providers
+CONFIG.to_model()  # same, as a validated instance of your ConFigueModel
 ```
 
 ## Documentation
