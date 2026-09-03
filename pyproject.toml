@@ -3,7 +3,7 @@ packages = [{ include = "pyconfigue", from = "src" }]
 
 [project]
 name = "pyconfigue"
-version = "0.0.2"
+version = "1.0.0"
 readme = "README.md"
 description = "A library that let's you manage your python app configuration easily"
 authors = [{name="Alexi Desvignes Nouvel"}]
@@ -23,7 +23,7 @@ pyyaml = "^6.0.2"
 toml = "^0.10.2"
 
 [tool.poetry.group.lint.dependencies]
-ruff = "^0.11.9"
+ruff = "*"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.4.1"
